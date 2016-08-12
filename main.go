@@ -17,7 +17,8 @@ import (
 // X Make a bitcoin address
 // X Fund it
 // X Create a signed transaction spending from it
-// - Send that transaction to a testnet node
+// X Manually send that transaction to a testnet node
+// - Do the handshake wire protocol
 
 func main() {
 	privKey, pubKey := btcec.PrivKeyFromBytes(btcec.S256(), []byte("nehanarula123456"))
@@ -34,6 +35,7 @@ func main() {
 	pay_me := "76a91462fa0c3c58c7d618994808e7789d7912cc8e40e388ac"
 	pay_tadge := "001443aac20a116e09ea4f7914be1c55e4c17aa600b7"
 
+	// create transaction spending it
 	h, err := chainhash.NewHashFromStr(txid)
 	if err != nil {
 		panic(err)
