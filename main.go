@@ -16,7 +16,7 @@ import (
 // TODO
 // X Make a bitcoin address
 // X Fund it
-// - Create a signed transaction spending from it
+// X Create a signed transaction spending from it
 // - Send that transaction to a testnet node
 
 func main() {
