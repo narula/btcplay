@@ -19,10 +19,9 @@ import (
 // X Create a signed transaction spending from it
 // X Manually send that transaction to a testnet node
 // - Do the handshake wire protocol
+// - Make an hd keypair
 
-func main() {
-	privKey, pubKey := btcec.PrivKeyFromBytes(btcec.S256(), []byte("nehanarula123456"))
-	chainParams := &chaincfg.TestNet3Params
+func spend(privKey *btcec.PrivateKey, pubKey *btcec.PublicKey, chainParams *chaincfg.Params) {
 	addr, err := btcutil.NewAddressPubKeyHash(btcutil.Hash160(pubKey.SerializeCompressed()), chainParams)
 	_ = addr
 	if err != nil {
@@ -68,6 +67,12 @@ func main() {
 		panic(err)
 	}
 	fmt.Printf("%x\n", buf.Bytes())
+}
+
+func main() {
+	privKey, pubKey := btcec.PrivKeyFromBytes(btcec.S256(), []byte("nehanarula123456"))
+	chainParams := &chaincfg.TestNet3Params
+	spend(privKey, pubKey, chainParams)
 }
 
 func network_crap() {
